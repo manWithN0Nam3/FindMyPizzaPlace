@@ -10,11 +10,11 @@
 #import <MapKit/MapKit.h>
 
 @interface Pizza : MKMapItem
-
-@property float milesDifference;
-
-@property NSString *name;
-
--(instancetype)initWithPizzaPlace:(NSString *)name andMilesDifference:(float)milesDifference;
+//
+//@property float milesDifference;
+//
+////@property NSString *name;
+//
+//-(instancetype)initWithPizzaPlace:(NSString *)name andMilesDifference:(float)milesDifference;
 
 @end

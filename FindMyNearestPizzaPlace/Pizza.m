@@ -9,16 +9,16 @@
 #import "Pizza.h"
 
 @implementation Pizza
-
--(instancetype)initWithPizzaPlace:(NSString *)name andMilesDifference:(float)milesDifference{
-    self = [super init];
-    if (self) {
-        self.name = name;
-        self.milesDifference = milesDifference;
-    }
-
-    return self;
-}
+//
+//-(instancetype)initWithPizzaPlace:(NSString *)name andMilesDifference:(float)milesDifference{
+//    self = [super init];
+//    if (self) {
+//        self.name = name;
+//        self.milesDifference = milesDifference;
+//    }
+//
+//    return self;
+//}
 
 
 @end

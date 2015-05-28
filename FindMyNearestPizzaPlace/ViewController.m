@@ -86,14 +86,13 @@
         NSArray *mapItems = response.mapItems;
         Pizza *pizza = [Pizza new];
 
-//        NSLog(@"%@",response.mapItems.firstObject);
         NSMutableArray *mutableArray = [NSMutableArray new];
         for (int i = 0; i<=3; i++) {
 
-//           self.mapItemP = [mapItems objectAtIndex:i];
-            NSLog(@"%@",self.mapItemP.name);
-            CLLocationDistance distanceInMeters = [self.mapItemP.placemark.location distanceFromLocation:location];
-            float mileD = distanceInMeters / 1609.34;
+
+
+
+//            pizza.milesDifference = mileD;
 
             pizza = [mapItems objectAtIndex:i];
 
@@ -126,7 +125,7 @@
         NSMutableString *coolString = [NSMutableString string];
 
         for (MKRouteStep *step in route.steps) {
-                        NSLog(@"%@",step.instructions);
+//                        NSLog(@"%@",step.instructions);
 
             [coolString appendFormat:@"%d: %@\n", x,step.instructions];
             x++;
@@ -167,7 +166,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
     Pizza *pizza =[self.pizzaShops objectAtIndex:indexPath.row];
+
+
+ CLLocationDistance distanceInMeters = [pizza.placemark.location distanceFromLocation:self.locationManager.location];
+    float mileD = distanceInMeters / 1609.34;
+
     cell.textLabel.text = pizza.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f miles",mileD];
+
 //    cell.accessoryType = UITableViewCellAccessoryCheckmark;
 
 
