@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Pizza.h"
 
 @interface ViewController : UIViewController
 

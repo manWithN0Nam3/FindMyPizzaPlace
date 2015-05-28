@@ -14,6 +14,9 @@
 		9756DE6F1B1798CC00124D7B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9756DE6E1B1798CC00124D7B /* Images.xcassets */; };
 		9756DE721B1798CC00124D7B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9756DE701B1798CC00124D7B /* LaunchScreen.xib */; };
 		9756DE7E1B1798CD00124D7B /* FindMyNearestPizzaPlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9756DE7D1B1798CD00124D7B /* FindMyNearestPizzaPlaceTests.m */; };
+		97FFCAAC1B179A6700694146 /* Pizza.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FFCAAB1B179A6700694146 /* Pizza.m */; };
+		97FFCAAE1B179ACC00694146 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97FFCAAD1B179ACC00694146 /* MapKit.framework */; };
+		97FFCAB01B179AD900694146 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97FFCAAF1B179AD900694146 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,10 @@
 		9756DE771B1798CD00124D7B /* FindMyNearestPizzaPlaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindMyNearestPizzaPlaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9756DE7C1B1798CD00124D7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9756DE7D1B1798CD00124D7B /* FindMyNearestPizzaPlaceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindMyNearestPizzaPlaceTests.m; sourceTree = "<group>"; };
+		97FFCAAA1B179A6700694146 /* Pizza.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pizza.h; sourceTree = "<group>"; };
+		97FFCAAB1B179A6700694146 /* Pizza.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pizza.m; sourceTree = "<group>"; };
+		97FFCAAD1B179ACC00694146 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		97FFCAAF1B179AD900694146 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97FFCAB01B179AD900694146 /* CoreLocation.framework in Frameworks */,
+				97FFCAAE1B179ACC00694146 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +72,8 @@
 		9756DE551B1798CC00124D7B = {
 			isa = PBXGroup;
 			children = (
+				97FFCAAF1B179AD900694146 /* CoreLocation.framework */,
+				97FFCAAD1B179ACC00694146 /* MapKit.framework */,
 				9756DE601B1798CC00124D7B /* FindMyNearestPizzaPlace */,
 				9756DE7A1B1798CD00124D7B /* FindMyNearestPizzaPlaceTests */,
 				9756DE5F1B1798CC00124D7B /* Products */,
@@ -81,6 +92,8 @@
 		9756DE601B1798CC00124D7B /* FindMyNearestPizzaPlace */ = {
 			isa = PBXGroup;
 			children = (
+				97FFCAAA1B179A6700694146 /* Pizza.h */,
+				97FFCAAB1B179A6700694146 /* Pizza.m */,
 				9756DE651B1798CC00124D7B /* AppDelegate.h */,
 				9756DE661B1798CC00124D7B /* AppDelegate.m */,
 				9756DE681B1798CC00124D7B /* ViewController.h */,
@@ -219,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97FFCAAC1B179A6700694146 /* Pizza.m in Sources */,
 				9756DE6A1B1798CC00124D7B /* ViewController.m in Sources */,
 				9756DE671B1798CC00124D7B /* AppDelegate.m in Sources */,
 				9756DE641B1798CC00124D7B /* main.m in Sources */,
@@ -416,6 +430,7 @@
 				9756DE831B1798CD00124D7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9756DE841B1798CD00124D7B /* Build configuration list for PBXNativeTarget "FindMyNearestPizzaPlaceTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +439,7 @@
 				9756DE861B1798CD00124D7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
