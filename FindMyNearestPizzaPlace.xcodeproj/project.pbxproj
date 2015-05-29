@@ -17,6 +17,8 @@
 		97FFCAAC1B179A6700694146 /* Pizza.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FFCAAB1B179A6700694146 /* Pizza.m */; };
 		97FFCAAE1B179ACC00694146 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97FFCAAD1B179ACC00694146 /* MapKit.framework */; };
 		97FFCAB01B179AD900694146 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97FFCAAF1B179AD900694146 /* CoreLocation.framework */; };
+		97FFCAB31B17C3C500694146 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FFCAB21B17C3C500694146 /* DetailViewController.m */; };
+		97FFCAB61B17CA8E00694146 /* MyPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FFCAB51B17CA8E00694146 /* MyPointAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,10 @@
 		97FFCAAB1B179A6700694146 /* Pizza.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pizza.m; sourceTree = "<group>"; };
 		97FFCAAD1B179ACC00694146 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		97FFCAAF1B179AD900694146 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		97FFCAB11B17C3C500694146 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		97FFCAB21B17C3C500694146 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		97FFCAB41B17CA8E00694146 /* MyPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPointAnnotation.h; sourceTree = "<group>"; };
+		97FFCAB51B17CA8E00694146 /* MyPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPointAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,10 @@
 				9756DE661B1798CC00124D7B /* AppDelegate.m */,
 				9756DE681B1798CC00124D7B /* ViewController.h */,
 				9756DE691B1798CC00124D7B /* ViewController.m */,
+				97FFCAB11B17C3C500694146 /* DetailViewController.h */,
+				97FFCAB21B17C3C500694146 /* DetailViewController.m */,
+				97FFCAB41B17CA8E00694146 /* MyPointAnnotation.h */,
+				97FFCAB51B17CA8E00694146 /* MyPointAnnotation.m */,
 				9756DE6B1B1798CC00124D7B /* Main.storyboard */,
 				9756DE6E1B1798CC00124D7B /* Images.xcassets */,
 				9756DE701B1798CC00124D7B /* LaunchScreen.xib */,
@@ -232,6 +242,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97FFCAB31B17C3C500694146 /* DetailViewController.m in Sources */,
+				97FFCAB61B17CA8E00694146 /* MyPointAnnotation.m in Sources */,
 				97FFCAAC1B179A6700694146 /* Pizza.m in Sources */,
 				9756DE6A1B1798CC00124D7B /* ViewController.m in Sources */,
 				9756DE671B1798CC00124D7B /* AppDelegate.m in Sources */,

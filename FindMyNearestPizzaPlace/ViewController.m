@@ -10,17 +10,18 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import "Pizza.h"
+#import "DetailViewController.h"
 
 @interface ViewController ()<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property Pizza *pizza;
-@property (weak, nonatomic) IBOutlet UIButton *routeButton;
 @property CLLocationManager *locationManager;
 @property NSMutableArray *pizzaShops;
 @property  MKMapItem *mapItemP;
 @property NSIndexPath *indexPath;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 
 @end
@@ -75,16 +76,21 @@
 
 
 -(void)findCoffeeShopsNearLoccation:(CLLocation *)location{
+
+    
+
     MKLocalSearchRequest *request = [MKLocalSearchRequest new];
 
     request.naturalLanguageQuery = @"pizza";
     request.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(2, 2));
 
+
     MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
 
         NSArray *mapItems = response.mapItems;
-        Pizza *pizza = [Pizza new];
+//        Pizza *pizza = [Pizza new];
+        MKMapItem *mapIt = [MKMapItem new];
 
         NSMutableArray *mutableArray = [NSMutableArray new];
         for (int i = 0; i<=3; i++) {
@@ -94,9 +100,10 @@
 
 //            pizza.milesDifference = mileD;
 
-            pizza = [mapItems objectAtIndex:i];
+//            pizza = [mapItems objectAtIndex:i];
+            mapIt = [mapItems objectAtIndex:i];
 
-            [mutableArray addObject:pizza];
+            [mutableArray addObject:mapIt];
 
             self.pizzaShops = [NSMutableArray arrayWithArray:mutableArray];
         }
@@ -112,36 +119,64 @@
 
 -(void)getDirections:(MKMapItem *)destinationItem {
 
-    MKDirectionsRequest *request = [MKDirectionsRequest new];
-    request.source = [MKMapItem mapItemForCurrentLocation];
-    request.destination = destinationItem;
 
-    MKDirections *directions = [[MKDirections alloc]initWithRequest:request];
-    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
-//        NSArray *routes = response.routes.firstObject;
-        MKRoute *route = response.routes.firstObject;
-
-        int x = 1;
-        NSMutableString *coolString = [NSMutableString string];
-
-        for (MKRouteStep *step in route.steps) {
-//                        NSLog(@"%@",step.instructions);
-
-            [coolString appendFormat:@"%d: %@\n", x,step.instructions];
-            x++;
-        }
-
-        
-        self.textView.text = coolString;
-        
+    if (_segmentedControl.selectedSegmentIndex == 0) {
+        MKDirectionsRequest *request = [MKDirectionsRequest new];
+        request.source = [MKMapItem mapItemForCurrentLocation];
+        request.destination = destinationItem;
 
 
+        request.transportType = MKDirectionsTransportTypeAutomobile;
+
+        MKDirections *directions = [[MKDirections alloc]initWithRequest:request];
 
 
-    }];
+        [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+            //        NSArray *routes = response.routes.firstObject;
+            MKRoute *route = response.routes.firstObject;
+
+            int x = 1;
+            NSMutableString *coolString = [NSMutableString string];
+
+            for (MKRouteStep *step in route.steps) {
+                //                        NSLog(@"%@",step.instructions);
+                [coolString appendFormat:@"%d: %@\n", x,step.instructions];
+                x++;
+            }
+            self.textView.text = coolString;
+        }];
+
+    }
+    else if (_segmentedControl.selectedSegmentIndex ==1){
+
+        MKDirectionsRequest *request = [MKDirectionsRequest new];
+        request.source = [MKMapItem mapItemForCurrentLocation];
+        request.destination = destinationItem;
 
 
-}
+        request.transportType = MKDirectionsTransportTypeWalking;
+
+        MKDirections *directions = [[MKDirections alloc]initWithRequest:request];
+
+
+        [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+            //        NSArray *routes = response.routes.firstObject;
+            MKRoute *route = response.routes.firstObject;
+
+            int x = 1;
+            NSMutableString *coolString = [NSMutableString string];
+
+            for (MKRouteStep *step in route.steps) {
+                //                        NSLog(@"%@",step.instructions);
+                [coolString appendFormat:@"%d: %@\n", x,step.instructions];
+                x++;
+            }
+            self.textView.text = coolString;
+        }];
+
+
+    }
+    }
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -153,6 +188,22 @@
 
 
 }
+#pragma mark IBAction
+
+- (IBAction)onSegmentedControllPressed:(UISegmentedControl *)sender {
+
+    if (sender.selectedSegmentIndex == 0) {
+        //    [request setTransportType:MKDirectionsTransportTypeAutomobile];
+
+        //is driving
+
+    }else if (sender.selectedSegmentIndex ==1){
+
+//is walking
+
+    }
+}
+
 #pragma mark tableViewDataSourceMethod
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
@@ -165,20 +216,26 @@
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
-    Pizza *pizza =[self.pizzaShops objectAtIndex:indexPath.row];
+    MKMapItem *mapItem = [self.pizzaShops objectAtIndex:indexPath.row];
+//    Pizza *pizza =[self.pizzaShops objectAtIndex:indexPath.row];
 
 
- CLLocationDistance distanceInMeters = [pizza.placemark.location distanceFromLocation:self.locationManager.location];
+ CLLocationDistance distanceInMeters = [mapItem.placemark.location distanceFromLocation:self.locationManager.location];
     float mileD = distanceInMeters / 1609.34;
 
-    cell.textLabel.text = pizza.name;
+    cell.textLabel.text = mapItem.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f miles",mileD];
 
 //    cell.accessoryType = UITableViewCellAccessoryCheckmark;
 
-
-
     return cell;
+
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    DetailViewController *dVc = segue.destinationViewController;
+
+    dVc.pizzaShops = self.pizzaShops;
 
 }
 

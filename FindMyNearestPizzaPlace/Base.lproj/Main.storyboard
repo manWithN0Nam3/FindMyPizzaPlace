@@ -55,8 +55,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="EGm-yz-s8N"/>
+                    <navigationItem key="navigationItem" id="EGm-yz-s8N">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="lN4-JK-htT">
+                            <rect key="frame" x="100" y="8" width="121" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="driving"/>
+                                <segment title="walking"/>
+                            </segments>
+                            <connections>
+                                <action selector="onSegmentedControllPressed:" destination="vXZ-lx-hvc" eventType="valueChanged" id="hkr-Fn-gSw"/>
+                            </connections>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="map" id="gSM-Nu-4Pp">
+                            <connections>
+                                <segue destination="up1-wN-7SI" kind="push" id="a8g-bp-Pyx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="segmentedControl" destination="lN4-JK-htT" id="kDV-u4-f5g"/>
                         <outlet property="tableView" destination="et5-8P-Ovy" id="wVW-eM-ME8"/>
                         <outlet property="textView" destination="VgC-oj-3g1" id="Rtg-t5-AUi"/>
                     </connections>
@@ -64,6 +83,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="766" y="344"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="1eJ-Fg-bu2">
+            <objects>
+                <viewController id="up1-wN-7SI" customClass="DetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pbQ-1H-XvM"/>
+                        <viewControllerLayoutGuide type="bottom" id="1cH-pa-nuM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t3E-kT-JfI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="59U-aj-hUc">
+                                <rect key="frame" x="0.0" y="108" width="326" height="460"/>
+                                <connections>
+                                    <outlet property="delegate" destination="up1-wN-7SI" id="OVM-Mr-usY"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="omy-mY-HwX"/>
+                    <connections>
+                        <outlet property="mapView" destination="59U-aj-hUc" id="z2B-24-oEI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0tO-te-bMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1207" y="322"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hl2-1R-Xx8">
